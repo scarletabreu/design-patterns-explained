@@ -175,5 +175,5 @@ factory-method/
 ## Ejecución del ejemplo
 
 ```bash
-dart run main.dart
+dart factory-method/main.dart
 ```

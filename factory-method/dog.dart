@@ -6,10 +6,3 @@ class Dog implements Animal {
     print("Woof");
   }
 }
-
-class Cat implements Animal {
-  @override
-  void speak() {
-    print("Meow");
-  }
-}
