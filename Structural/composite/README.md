@@ -1,4 +1,3 @@
-```markdown
 # Patrón Composite
 
 ## Descripción general
@@ -196,5 +195,5 @@ composite/
 ## Ejecución del ejemplo
 
 ```bash
-dart Structural/composite/main.dart
+dart structural/composite/main.dart
 ```
