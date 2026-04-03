@@ -212,5 +212,5 @@ abstract-factory/
 ## Ejecución del ejemplo
 
 ```bash
-dart abstract-factory/main.dart
+dart creational/abstract-factory/main.dart
 ```
