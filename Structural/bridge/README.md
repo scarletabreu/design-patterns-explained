@@ -62,7 +62,7 @@ abstract class Device {
 **`implementation/tv.dart`**
 
 ```dart
-import 'device.dart';
+import '../../Creational/bridge/device.dart'on/bridge/device.dart'/device.dart';
 
 class TV implements Device {
   @override
@@ -79,7 +79,7 @@ class TV implements Device {
 **`implementation/radio.dart`**
 
 ```dart
-import 'device.dart';
+import '../../Creational/bridge/device.dart'on/bridge/device.dart'/device.dart';
 
 class Radio implements Device {
   @override
@@ -96,7 +96,7 @@ class Radio implements Device {
 **`abstraction/remote_control.dart`**
 
 ```dart
-import '../implementation/device.dart';
+import '../../Creational/implementation/device.dart'device.dart'rt';
 
 class RemoteControl {
   final Device device;
@@ -116,7 +116,7 @@ class RemoteControl {
 **`abstraction/advanced_remote.dart`**
 
 ```dart
-import 'remote_control.dart';
+import '../../Creational/bridge/remote_control.dart'e/remote_control.dart'control.dart';
 
 class AdvancedRemote extends RemoteControl {
   AdvancedRemote(super.device);
@@ -229,6 +229,5 @@ bridge/
 ## Ejecución del ejemplo
 
 ```bash
-dart bridge/main.dart
-```
+dart structural/bridge/main.dart
 ```
