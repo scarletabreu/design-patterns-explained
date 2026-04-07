@@ -1,0 +1,38 @@
+@startuml
+title Patrón Flyweight
+
+package "flyweight" {
+
+  interface TreeType <<Flyweight>> {
+    +draw(x: int, y: int)
+  }
+
+  class ConcreteTreeType <<ConcreteFlyweight>> {
+    -name: String
+    -color: String
+    -texture: String
+    +draw(x: int, y: int)
+  }
+
+  class TreeFactory <<FlyweightFactory>> {
+    -_treeTypes: Map<String, ConcreteTreeType>
+    +getTreeType(name: String, color: String, texture: String): ConcreteTreeType
+  }
+
+  TreeType <|.. ConcreteTreeType
+  TreeFactory --> ConcreteTreeType : crea / reutiliza
+}
+
+package "context" {
+
+  class Tree <<Context>> {
+    -x: int
+    -y: int
+    -type: TreeType
+    +draw()
+  }
+
+  Tree --> TreeType : usa
+}
+
+@enduml
