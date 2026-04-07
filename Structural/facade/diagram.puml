@@ -1,0 +1,41 @@
+@startuml
+title Patrón Facade
+
+package "subsystem" {
+
+  class DVDPlayer {
+    +on()
+    +play()
+  }
+
+  class Projector {
+    +on()
+  }
+
+  class Amplifier {
+    +on()
+    +setVolume(volume: int)
+  }
+
+  class Lights {
+    +dim()
+  }
+}
+
+package "facade" {
+
+  class HomeTheaterFacade <<Facade>> {
+    -dvd: DVDPlayer
+    -projector: Projector
+    -amplifier: Amplifier
+    -lights: Lights
+    +watchMovie()
+  }
+}
+
+HomeTheaterFacade --> DVDPlayer
+HomeTheaterFacade --> Projector
+HomeTheaterFacade --> Amplifier
+HomeTheaterFacade --> Lights
+
+@enduml
