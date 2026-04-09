@@ -1,0 +1,69 @@
+@startuml
+title Patrón Mediator - Formulario de Registro
+
+package "mediator" {
+  interface Mediator <<Interface>> {
+    +notify(sender: Object, event: String): void
+  }
+
+  class FormMediator <<ConcreteMediator>> {
+    -nameField: InputField
+    -emailField: InputField
+    -termsCheckbox: Checkbox
+    -submitButton: SubmitButton
+    +notify(sender: Object, event: String): void
+    -_updateSubmitButton(): void
+  }
+
+  Mediator <|.. FormMediator
+}
+
+package "component" {
+  abstract class Component <<AbstractComponent>> {
+    #mediator: Mediator
+    +setMediator(m: Mediator): void
+  }
+
+  class InputField <<ConcreteComponent>> {
+    -name: String
+    -value: String
+    +setValue(val: String): void
+    +isValid(): bool
+  }
+
+  class Checkbox <<ConcreteComponent>> {
+    -name: String
+    -checked: bool
+    +toggle(): void
+  }
+
+  class SubmitButton <<ConcreteComponent>> {
+    -enabled: bool
+    +updateState(isEnabled: bool): void
+    +click(): void
+  }
+
+  Component <|-- InputField
+  Component <|-- Checkbox
+  Component <|-- SubmitButton
+}
+
+' Relaciones de comunicación
+FormMediator o-- InputField
+FormMediator o-- Checkbox
+FormMediator o-- SubmitButton
+
+Component --> Mediator : "notifica a"
+
+note top of FormMediator
+  Centraliza la lógica de validación:
+  si los campos son válidos y el checkbox
+  está marcado, habilita el botón.
+end note
+
+note bottom of Component
+  Los componentes no se conocen entre sí.
+  Solo saben que existe un mediador.
+end note
+
+@enduml

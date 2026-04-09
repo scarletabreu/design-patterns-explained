@@ -1,0 +1,56 @@
+@startuml
+title Patrón Command - Editor de Texto
+
+package "command" {
+  interface Command <<Interface>> {
+    +execute(): void
+    +undo(): void
+  }
+
+  class WriteCommand <<ConcreteCommand>> {
+    -text: String
+    +execute(): void
+    +undo(): void
+  }
+
+  class EraseCommand <<ConcreteCommand>> {
+    -charCount: int
+    -erasedText: String
+    +execute(): void
+    +undo(): void
+  }
+
+
+
+  Command <|.. WriteCommand
+  Command <|.. EraseCommand
+
+}
+
+package "receiver" {
+  class TextEditor <<Receiver>> {
+    -content: String
+    +write(text: String): void
+    +erase(charCount: int): void
+  }
+}
+
+package "invoker" {
+  class CommandHistory <<Invoker>> {
+    -history: List<Command>
+    +executeCommand(command: Command): void
+    +undoLast(): void
+  }
+}
+
+' Relaciones de asociación
+WriteCommand --> TextEditor : actúa sobre
+EraseCommand --> TextEditor : actúa sobre
+CommandHistory --> Command : almacena y dispara
+
+note bottom of CommandHistory
+  El Invoker no sabe qué hace el comando,
+  solo llama a execute() o undo().
+end note
+
+@enduml

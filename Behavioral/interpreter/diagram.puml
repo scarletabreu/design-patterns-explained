@@ -1,0 +1,61 @@
+@startuml
+title Patrón Interpreter - Evaluador de Expresiones Lógicas
+
+package "expression" {
+
+  interface Expression <<AbstractExpression>> {
+    +interpret(context: Map<String, bool>): bool
+  }
+
+  class TerminalExpression <<TerminalExpression>> {
+    -variable: String
+    +TerminalExpression(variable: String)
+    +interpret(context: Map<String, bool>): bool
+  }
+
+  class AndExpression <<NonTerminalExpression>> {
+    -left: Expression
+    -right: Expression
+    +AndExpression(left: Expression, right: Expression)
+    +interpret(context: Map<String, bool>): bool
+  }
+
+  class OrExpression <<NonTerminalExpression>> {
+    -left: Expression
+    -right: Expression
+    +OrExpression(left: Expression, right: Expression)
+    +interpret(context: Map<String, bool>): bool
+  }
+
+  class NotExpression <<NonTerminalExpression>> {
+    -operand: Expression
+    +NotExpression(operand: Expression)
+    +interpret(context: Map<String, bool>): bool
+  }
+
+  class XorExpression <<NonTerminalExpression>> {
+    -left: Expression
+    -right: Expression
+    +XorExpression(left: Expression, right: Expression)
+    +interpret(context: Map<String, bool>): bool
+  }
+
+  Expression <|.. TerminalExpression
+  Expression <|.. AndExpression
+  Expression <|.. OrExpression
+  Expression <|.. NotExpression
+  Expression <|.. XorExpression
+
+  ' Relaciones de composición para mostrar la estructura de árbol
+  AndExpression o-- Expression
+  OrExpression o-- Expression
+  NotExpression o-- Expression
+  XorExpression o-- Expression
+}
+
+note right of Expression
+  El contexto es un Map<String, bool>
+  que contiene los valores de las variables.
+end note
+
+@enduml
