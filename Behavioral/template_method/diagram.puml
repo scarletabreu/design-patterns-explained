@@ -1,0 +1,56 @@
+@startuml
+title Patrón Template Method - Generador de Reportes
+
+package "template" {
+  abstract class ReportGenerator <<AbstractClass>> {
+    +generate(): void <<TemplateMethod>>
+    +fetchData(): List<Map>
+    +processData(data: List<Map>): List<Map>
+    {abstract} +reportName(): String
+    {abstract} +formatOutput(data: List<Map>): String
+    {abstract} +saveFile(content: String): void
+    +onComplete(): void <<Hook>>
+  }
+}
+
+package "report" {
+  class CsvReport <<ConcreteClass>> {
+    +reportName(): String
+    +formatOutput(data: List<Map>): String
+    +saveFile(content: String): void
+  }
+
+  class HtmlReport <<ConcreteClass>> {
+    +reportName(): String
+    +formatOutput(data: List<Map>): String
+    +saveFile(content: String): void
+    +onComplete(): void
+  }
+}
+
+' Relaciones de herencia
+ReportGenerator <|-- CsvReport
+ReportGenerator <|-- HtmlReport
+
+note right of ReportGenerator::generate
+  **Esqueleto del algoritmo:**
+  1. reportName()
+  2. fetchData()
+  3. processData()
+  4. formatOutput()
+  5. saveFile()
+  6. onComplete()
+end note
+
+note bottom of HtmlReport
+  Sobrescribe los métodos abstractos
+  y el **Hook** onComplete() para
+  abrir el navegador.
+end note
+
+note bottom of CsvReport
+  Solo implementa los pasos
+  obligatorios (abstractos).
+end note
+
+@enduml

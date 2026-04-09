@@ -1,0 +1,63 @@
+@startuml
+title Patrón State - Reproductor de Música
+
+package "state" {
+  interface PlayerState <<Interface>> {
+    +pressPlay(player: MusicPlayer): void
+    +pressPause(player: MusicPlayer): void
+    +pressStop(player: MusicPlayer): void
+  }
+
+  class StoppedState <<ConcreteState>> {
+    +pressPlay(player: MusicPlayer): void
+    +pressPause(player: MusicPlayer): void
+    +pressStop(player: MusicPlayer): void
+  }
+
+  class PlayingState <<ConcreteState>> {
+    +pressPlay(player: MusicPlayer): void
+    +pressPause(player: MusicPlayer): void
+    +pressStop(player: MusicPlayer): void
+  }
+
+  class PausedState <<ConcreteState>> {
+    +pressPlay(player: MusicPlayer): void
+    +pressPause(player: MusicPlayer): void
+    +pressStop(player: MusicPlayer): void
+  }
+
+  PlayerState <|.. StoppedState
+  PlayerState <|.. PlayingState
+  PlayerState <|.. PausedState
+}
+
+package "context" {
+  class MusicPlayer <<Context>> {
+    -state: PlayerState
+    -history: List<PlayerState>
+    +currentTrack: String
+    +MusicPlayer()
+    +setState(state: PlayerState): void
+    +revertState(): void
+    +pressPlay(): void
+    +pressPause(): void
+    +pressStop(): void
+  }
+}
+
+' Relaciones
+MusicPlayer *-- PlayerState : "mantiene estado actual"
+MusicPlayer o-- PlayerState : "almacena historial"
+PlayerState .right.> MusicPlayer : "usa y cambia estado de"
+
+note bottom of MusicPlayer
+  El constructor inicializa con StoppedState.
+  revertState() implementa la variante avanzada.
+end note
+
+note right of PlayerState
+  Los métodos reciben el contexto (player)
+  para invocar setState() y realizar transiciones.
+end note
+
+@enduml
