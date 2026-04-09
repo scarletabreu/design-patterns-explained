@@ -1,4 +1,4 @@
-import 'procesador_pago.dart';
+import '../target/procesador_pago.dart';
 
 class PasarelaModerna implements ProcesadorPago {
   @override

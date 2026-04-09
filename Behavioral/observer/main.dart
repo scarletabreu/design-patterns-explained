@@ -1,6 +1,6 @@
-import 'estacion_meteorologica.dart';
-import 'pantalla_celsius.dart';
-import 'alerta_calor.dart';
+import 'subject/estacion_meteorologica.dart';
+import 'observer/pantalla_celsius.dart';
+import 'observer/alerta_calor.dart';
 
 void main() {
   final estacion = EstacionMeteorologica();

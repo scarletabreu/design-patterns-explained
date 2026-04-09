@@ -1,4 +1,4 @@
-import 'estrategia_descuento.dart';
+import '../strategy/estrategia_descuento.dart';
 
 class Carrito {
   final List<double> _items = [];

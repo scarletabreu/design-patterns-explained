@@ -1,5 +1,5 @@
-import 'servicio_imagenes.dart';
-import 'imagen_real.dart';
+import '../subject/servicio_imagenes.dart';
+import '../real_subject/imagen_real.dart';
 
 class ProxyImagen implements ServicioImagenes {
   final String ruta;

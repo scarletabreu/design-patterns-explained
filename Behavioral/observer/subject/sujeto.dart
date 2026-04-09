@@ -1,4 +1,4 @@
-import 'observador.dart';
+import '../observer/observador.dart';
 
 class Sujeto<T> {
   final List<Observador<T>> _observadores = [];

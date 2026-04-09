@@ -1,7 +1,7 @@
-import 'carrito.dart';
-import 'sin_descuento.dart';
-import 'descuento_porcentaje.dart';
-import 'descuento_fijo.dart';
+import 'context/carrito.dart';
+import 'strategy/sin_descuento.dart';
+import 'strategy/descuento_porcentaje.dart';
+import 'strategy/descuento_fijo.dart';
 
 void main() {
   final carrito = Carrito(SinDescuento())

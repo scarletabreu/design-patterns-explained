@@ -1,5 +1,5 @@
-import 'editor.dart';
-import 'historial.dart';
+import 'originator/editor.dart';
+import 'caretaker/historial.dart';
 
 void main() {
   final editor = Editor();

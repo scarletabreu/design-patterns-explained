@@ -1,4 +1,4 @@
-import 'servicio_imagenes.dart';
+import '../subject/servicio_imagenes.dart';
 
 class ImagenReal implements ServicioImagenes {
   final String ruta;

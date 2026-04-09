@@ -1,5 +1,5 @@
-import 'procesador_pago.dart';
-import 'pasarela_legacy.dart';
+import '../target/procesador_pago.dart';
+import '../adaptee/pasarela_legacy.dart';
 
 class AdaptadorLegacy implements ProcesadorPago {
   final PasarelaLegacy _legacy;

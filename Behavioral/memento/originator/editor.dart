@@ -1,4 +1,4 @@
-import 'editor_memento.dart';
+import '../memento/editor_memento.dart';
 
 class Editor {
   String _contenido = '';

@@ -1,4 +1,4 @@
-import 'solicitud_soporte.dart';
+import '../request/solicitud_soporte.dart';
 
 abstract class Manejador {
   Manejador? _siguiente;

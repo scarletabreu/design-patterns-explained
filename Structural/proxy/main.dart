@@ -1,4 +1,4 @@
-import 'proxy_imagen.dart';
+import 'proxy/proxy_imagen.dart';
 
 void main() {
   final imagen = ProxyImagen('retrato.png');

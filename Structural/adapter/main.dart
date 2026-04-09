@@ -1,7 +1,7 @@
-import 'procesador_pago.dart';
-import 'pasarela_moderna.dart';
-import 'adaptador_legacy.dart';
-import 'pasarela_legacy.dart';
+import 'target/procesador_pago.dart';
+import 'service/pasarela_moderna.dart';
+import 'adapter/adaptador_legacy.dart';
+import 'adaptee/pasarela_legacy.dart';
 
 void main() {
   final List<ProcesadorPago> procesadores = [

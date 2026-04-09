@@ -1,5 +1,5 @@
 import 'manejador.dart';
-import 'solicitud_soporte.dart';
+import '../request/solicitud_soporte.dart';
 
 class SoporteNivel1 extends Manejador {
   @override
