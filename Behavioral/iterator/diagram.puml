@@ -1,0 +1,63 @@
+@startuml
+title Patrón Iterator - Colección de Libros
+
+package "model" {
+  class Book {
+    -title: String
+    -author: String
+    +toString(): String
+  }
+}
+
+package "iterator" {
+  interface Iterator<T> <<Interface>> {
+    +hasNext(): bool
+    +next(): T
+  }
+
+  class BookIterator<Book> <<ConcreteIterator>> {
+    -books: List<Book>
+    -index: int
+    +hasNext(): bool
+    +next(): Book
+  }
+
+  class ReverseBookIterator<Book> <<ConcreteIterator>> {
+    -books: List<Book>
+    -index: int
+    +hasNext(): bool
+    +next(): Book
+  }
+
+  Iterator <|.. BookIterator
+  Iterator <|.. ReverseBookIterator
+}
+
+package "collection" {
+  interface IterableCollection<T> <<Interface>> {
+    +createIterator(): Iterator<T>
+  }
+
+  class BookCollection <<ConcreteCollection>> {
+    -books: List<Book>
+    +addBook(book: Book): void
+    +createIterator(): Iterator<Book>
+    +createReverseIterator(): Iterator<Book>
+  }
+
+  IterableCollection <|.. BookCollection
+}
+
+' Relaciones
+BookCollection .right.> BookIterator : "crea"
+BookCollection .right.> ReverseBookIterator : "crea"
+BookIterator o-- Book : "recorre"
+ReverseBookIterator o-- Book : "recorre"
+BookCollection o-- Book : "almacena"
+
+note bottom of BookIterator
+  Mantiene el estado actual
+  del recorrido (index).
+end note
+
+@enduml
