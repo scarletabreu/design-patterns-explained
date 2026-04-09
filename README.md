@@ -1,99 +1,82 @@
 # Design Patterns Explained
 
-Repositorio de referencia práctica para aprender y aplicar patrones de diseño de software usando Dart. Cada patrón está implementado con un ejemplo limpio y real, organizado siguiendo principios SOLID.
+Repositorio de referencia práctica para aprender y aplicar **patrones de diseño de software** usando Dart. Cada patrón está implementado con un ejemplo limpio, real y documentado, siguiendo los principios **SOLID**.
 
 ---
 
 ## Estructura del repositorio
-
 ```
 design-patterns-explained/
 │
-├── Creational/
-│   ├── factory-method/
-│   ├── abstract-factory/
-│   └── builder/
-│
-├── Structural/
-│   ├── bridge/
-│   ├── composite/
-│   └── decorator/
-│
-└── Behavioral/
-    └── visitor/
+├── Creational/    # Creación de objetos y gestión de instancias
+├── Structural/    # Composición de clases y estructuras
+└── Behavioral/    # Comunicación y algoritmos entre objetos
 ```
 
 ---
 
-## Patrones implementados
+### Patrones implementados
 
 ### Creacionales
+Gestionan el proceso de creación de objetos, desacoplando al cliente de las clases concretas.
 
-Patrones que gestionan el proceso de creación de objetos, desacoplando al cliente de las clases concretas que instancia.
-
-| Patrón | Intención | Concepto clave |
-|---|---|---|
-| [Factory Method](./Creational/factory-method/) | Definir una interfaz para crear objetos, dejando que las subclases decidan qué clase instanciar | Delega la instanciación a las subclases |
-| [Abstract Factory](./Creational/abstract-factory/) | Proveer una interfaz para crear familias de objetos relacionados sin especificar sus clases concretas | Garantiza consistencia entre familias de objetos |
-| [Builder](./Creational/builder/) | Separar la construcción de un objeto complejo de su representación final | Ensamblado paso a paso |
-
----
+| Patrón            | Concepto clave              | Aplicación común                          |
+|-------------------|-----------------------------|-------------------------------------------|
+| **Factory Method**    | Delegar instanciación       | Creación de diferentes tipos de notificaciones |
+| **Abstract Factory**  | Familias de objetos         | UI Kits (Material vs Cupertino)           |
+| **Builder**           | Paso a paso                 | Construcción de objetos complejos (HTTP requests) |
+| **Prototype**         | Clonación                   | Duplicar modelos de datos con `copyWith`  |
+| **Singleton**         | Instancia única             | Servicios de base de datos o Auth         |
 
 ### Estructurales
+Gestionan la composición de clases y objetos para formar estructuras más grandes y flexibles.
 
-Patrones que gestionan la composición de clases y objetos para formar estructuras más grandes y flexibles.
-
-| Patrón | Intención | Concepto clave |
-|---|---|---|
-| [Bridge](./Structural/bridge/) | Desacoplar una abstracción de su implementación para que ambas puedan variar de forma independiente | Composición sobre herencia en dos dimensiones |
-| [Composite](./Structural/composite/) | Componer objetos en estructuras de árbol y tratar elementos individuales y compuestos de forma uniforme | Estructuras jerárquicas recursivas |
-| [Decorator](./Structural/decorator/) | Añadir responsabilidades a un objeto de forma dinámica sin modificar su clase | Capas de funcionalidad en tiempo de ejecución |
-
----
+| Patrón            | Concepto clave                    | Aplicación común                              |
+|-------------------|-----------------------------------|-----------------------------------------------|
+| **Adapter**           | Traducir interfaces               | Integrar librerías externas de terceros       |
+| **Bridge**            | Abstracción vs Implementación     | Drivers de base de datos vs Lógica de negocio |
+| **Composite**         | Jerarquía de árbol                | Estructura de carpetas o Widgets en Flutter   |
+| **Decorator**         | Envolver funcionalidad            | Añadir logs o encriptación a servicios        |
+| **Facade**            | Punto de entrada único            | Interfaz simple para un subsistema complejo   |
+| **Flyweight**         | Compartir estado intrínseco       | Optimización de memoria en sistemas de partículas |
+| **Proxy**             | Control de acceso                 | Caching de resultados o Lazy Loading          |
 
 ### De comportamiento
+Gestionan la comunicación, algoritmos y distribución de responsabilidades.
 
-Patrones que gestionan la comunicación y distribución de responsabilidades entre objetos.
-
-| Patrón | Intención | Concepto clave |
-|---|---|---|
-| [Visitor](./Behavioral/visitor/) | Definir nuevas operaciones sobre los elementos de una estructura sin modificar sus clases | Double dispatch — separa datos de algoritmos |
+| Patrón                  | Concepto clave                  | Aplicación común                              |
+|-------------------------|---------------------------------|-----------------------------------------------|
+| **Chain of Responsibility** | Cadena de mando              | Middleware de autenticación y logs            |
+| **Command**             | Encapsular acciones             | Implementación de botones con Undo/Redo       |
+| **Interpreter**         | Gramática y lenguaje            | Parsing de expresiones matemáticas            |
+| **Iterator**            | Recorrido uniforme              | Navegar colecciones personalizadas            |
+| **Mediator**            | Hub de comunicaciones           | Comunicación entre múltiples componentes UI   |
+| **Memento**             | Capturar estado previo          | Guardado de estados en juegos o editores      |
+| **Observer**            | Suscripción a eventos           | Streams en Dart y gestión de estados (Bloc)   |
+| **State**               | Comportamiento por estado       | Ciclo de vida de una descarga o conexión      |
+| **Strategy**            | Algoritmos intercambiables      | Diferentes métodos de pago o ordenamiento     |
+| **Template Method**     | Esqueleto de algoritmo          | Flujo base de procesamiento de datos          |
+| **Visitor**             | Operaciones externas            | Reportes o analítica sobre jerarquías         |
 
 ---
 
 ## Cómo ejecutar los ejemplos
 
-Cada patrón es independiente. Para ejecutar cualquier ejemplo:
+Cada patrón es independiente y contiene su propio archivo `README.md` detallado.
 
 ```bash
-cd Creational/factory-method
+# Ejemplo: Ejecutar el patrón Singleton
+cd Creational/singleton
 dart run main.dart
 ```
+---
+### Requisitos
+
+Dart SDK >= 3.0.0
 
 ---
+### Referencias
 
-## Requisitos
-
-- [Dart SDK](https://dart.dev/get-dart) >= 3.0.0
-
----
-
-## Referencia rápida
-
-| Patrón | Categoría | Problema que resuelve |
-|---|---|---|
-| Factory Method | Creacional | Acoplamiento a clases concretas |
-| Abstract Factory | Creacional | Familias de objetos inconsistentes |
-| Builder | Creacional | Constructores con demasiados parámetros |
-| Bridge | Estructural | Explosión de clases por múltiples dimensiones |
-| Composite | Estructural | Tratamiento inconsistente de árboles y hojas |
-| Decorator | Estructural | Explosión de clases por comportamientos combinables |
-| Visitor | Comportamiento | Añadir operaciones sin modificar clases existentes |
-
----
-
-## Referencias
-
-- Gamma, E. et al. — *Design Patterns: Elements of Reusable Object-Oriented Software* (GoF)
-- [refactoring.guru/design-patterns](https://refactoring.guru/design-patterns)
-- [dart.dev](https://dart.dev)
+- Gamma, E. et al. — Design Patterns: Elements of Reusable Object-Oriented Software (GoF).
+- Refactoring Guru — refactoring.guru/design-patterns
+Dart Documentation — dart.dev
