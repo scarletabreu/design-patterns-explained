@@ -2,6 +2,11 @@
 
 Repositorio de referencia práctica para aprender y aplicar **patrones de diseño de software** usando Dart. Cada patrón está implementado con un ejemplo limpio, real y documentado, siguiendo los principios **SOLID**.
 
+## Creadores
+### Scarlet Abreu    - 10153953
+### Isaac Peña       - 10154671
+### Elías De La Cruz - 10155971
+
 ---
 
 ## Estructura del repositorio
